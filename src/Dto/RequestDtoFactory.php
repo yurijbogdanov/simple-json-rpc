@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SimpleJsonRpc\Dto;
@@ -41,7 +42,7 @@ final class RequestDtoFactory
      */
     public function createFromJson(string $json): RequestDto
     {
-        $data = \json_decode($json, true);
+        $data = json_decode($json, true);
 
         if (!\is_array($data)) {
             throw new ParseErrorException('Not array');

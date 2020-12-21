@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SimpleJsonRpc\Dto;
@@ -27,14 +28,14 @@ final class RequestDto implements \JsonSerializable
     private $params;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $id;
 
     /**
-     * @param string $method
-     * @param array $params
-     * @param string|null $id
+     * @param string      $method
+     * @param array       $params
+     * @param null|string $id
      */
     public function __construct(string $method, array $params = [], ?string $id = null)
     {
@@ -68,7 +69,7 @@ final class RequestDto implements \JsonSerializable
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getId(): ?string
     {

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SimpleJsonRpc\Dto;
@@ -21,7 +22,7 @@ final class ResponseDto implements \JsonSerializable
     private $jsonrpc = '2.0';
 
     /**
-     * @var mixed|null
+     * @var mixed
      */
     private $result;
 
@@ -31,14 +32,14 @@ final class ResponseDto implements \JsonSerializable
     private $error;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $id;
 
     /**
-     * @param mixed $result Result
-     * @param string|null $id
-     * @param array|null $error Error
+     * @param mixed       $result Result
+     * @param null|string $id
+     * @param null|array  $error  Error
      */
     public function __construct($result, ?string $id = null, array $error = null)
     {
@@ -66,7 +67,7 @@ final class ResponseDto implements \JsonSerializable
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getId(): ?string
     {

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SimpleJsonRpc\Exception;
@@ -14,8 +15,8 @@ abstract class ServerException extends \RuntimeException implements ServerExcept
     private $info;
 
     /**
-     * @param string $info
-     * @param \Throwable|null $previous
+     * @param string          $info
+     * @param null|\Throwable $previous
      */
     public function __construct(string $info = '', ?\Throwable $previous = null)
     {

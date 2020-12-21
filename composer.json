@@ -1,6 +1,6 @@
 {
     "name": "yurijbogdanov/simple-json-rpc",
-    "type": "project",
+    "type": "library",
     "description": "",
     "keywords": ["php"],
     "homepage": "https://github.com/yurijbogdanov/simple-json-rpc",
@@ -12,13 +12,17 @@
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": "^7.2",
         "ext-json": "*",
-        "guzzlehttp/guzzle": "^7.2",
-        "php-amqplib/php-amqplib": "^2.12"
+        "guzzlehttp/guzzle": "^6.0",
+        "php-amqplib/php-amqplib": "^2.0"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
         "roave/security-advisories": "dev-master"
+    },
+    "config": {
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
@@ -30,5 +34,5 @@
             "SimpleJsonRpc\\Tests\\": "tests/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SimpleJsonRpc\Transport;
@@ -10,7 +11,7 @@ final class GuzzleTransportFactory implements TransportFactoryInterface
 {
     /**
      * @param string $dsn
-     * @param array $options
+     * @param array  $options
      *
      * @return TransportInterface
      */
@@ -21,12 +22,12 @@ final class GuzzleTransportFactory implements TransportFactoryInterface
 
     /**
      * @param string $dsn
-     * @param array $options
+     * @param array  $options
      *
      * @return bool
      */
     public function supports(string $dsn, array $options): bool
     {
-        return 0 === strpos($dsn, 'https://') || 0 === strpos($dsn, 'http://');
+        return str_starts_with($dsn, 'https://') || str_starts_with($dsn, 'http://');
     }
 }
