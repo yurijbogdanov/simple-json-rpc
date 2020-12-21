@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SimpleJsonRpc\Transport;
@@ -27,9 +28,9 @@ final class NamedTransport implements NamedTransportInterface
     private $isDefault;
 
     /**
-     * @param string $transportId
+     * @param string             $transportId
      * @param TransportInterface $transport
-     * @param bool $isDefault
+     * @param bool               $isDefault
      */
     public function __construct(string $transportId, TransportInterface $transport, bool $isDefault = false)
     {

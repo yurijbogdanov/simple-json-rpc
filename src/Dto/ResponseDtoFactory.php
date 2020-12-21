@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SimpleJsonRpc\Dto;
@@ -36,7 +37,7 @@ final class ResponseDtoFactory
      */
     public function createFromJson(string $json): ResponseDto
     {
-        $data = \json_decode($json, true);
+        $data = json_decode($json, true);
 
         if (!\is_array($data)) {
             throw new ParseErrorException('Not array');
@@ -46,8 +47,8 @@ final class ResponseDtoFactory
     }
 
     /**
-     * @param \Throwable $e
-     * @param string|null $id
+     * @param \Throwable  $e
+     * @param null|string $id
      *
      * @return ResponseDto
      */
@@ -58,6 +59,10 @@ final class ResponseDtoFactory
             $errorCode = -32603;
         }
 
-        return new ResponseDto(null, $id, ['code' => $errorCode, 'message' => 'Internal Error', 'info' => $e->getMessage()]);
+        return new ResponseDto(
+            null,
+            $id,
+            ['code' => $errorCode, 'message' => 'Internal Error', 'info' => $e->getMessage()]
+        );
     }
 }

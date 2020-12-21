@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SimpleJsonRpc\Transport;
@@ -10,7 +11,7 @@ interface TransportFactoryInterface
 {
     /**
      * @param string $dsn
-     * @param array $options
+     * @param array  $options
      *
      * @return TransportInterface
      */
@@ -18,7 +19,7 @@ interface TransportFactoryInterface
 
     /**
      * @param string $dsn
-     * @param array $options
+     * @param array  $options
      *
      * @return bool
      */

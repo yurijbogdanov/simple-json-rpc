@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SimpleJsonRpc\Exception;
@@ -24,10 +25,10 @@ class ClientException extends \RuntimeException implements ClientExceptionInterf
     private $errorInfo;
 
     /**
-     * @param int $errorCode
-     * @param string $errorMessage
-     * @param string $errorInfo
-     * @param \Throwable|null $previous
+     * @param int             $errorCode
+     * @param string          $errorMessage
+     * @param string          $errorInfo
+     * @param null|\Throwable $previous
      */
     public function __construct(int $errorCode, string $errorMessage, string $errorInfo, \Throwable $previous = null)
     {

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SimpleJsonRpc\Transport;
@@ -23,13 +24,13 @@ final class MultiTransport implements TransportInterface
     private $methodMap = [];
 
     /**
-     * @var TransportInterface|null
+     * @var null|TransportInterface
      */
     private $defaultTransport;
 
     /**
      * @param array|NamedTransportInterface[] $transports
-     * @param array|array<string, string> $methods
+     * @param array|array<string, string>     $methods
      */
     public function __construct(array $transports, array $methods = [])
     {
@@ -56,8 +57,6 @@ final class MultiTransport implements TransportInterface
 
     /**
      * @param NamedTransportInterface $transport
-     *
-     * @return void
      */
     private function registerTransport(NamedTransportInterface $transport): void
     {
@@ -71,8 +70,6 @@ final class MultiTransport implements TransportInterface
     /**
      * @param string $method
      * @param string $transportId
-     *
-     * @return void
      */
     private function registerMethod(string $method, string $transportId): void
     {
@@ -101,7 +98,7 @@ final class MultiTransport implements TransportInterface
         $transport = $this->transportMap[$transportId] ?? null;
 
         if (null === $transport) {
-            throw new TransportException(\sprintf('transport not found for the method "%s"', $method));
+            throw new TransportException(sprintf('transport not found for the method "%s"', $method));
         }
 
         return $transport;

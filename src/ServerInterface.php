@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SimpleJsonRpc;
@@ -14,10 +15,8 @@ use SimpleJsonRpc\Exception\ProcedureNotFoundException;
 interface ServerInterface
 {
     /**
-     * @param string $method
+     * @param string   $method
      * @param callable $handler
-     *
-     * @return void
      */
     public function registerMethod(string $method, callable $handler): void;
 
@@ -29,13 +28,13 @@ interface ServerInterface
     /**
      * @param string $method
      *
-     * @return callable|null
+     * @return null|callable
      */
     public function resolveProcedure(string $method): ?callable;
 
     /**
      * @param callable $procedure
-     * @param array $params
+     * @param array    $params
      *
      * @throws \Throwable
      *
@@ -54,8 +53,8 @@ interface ServerInterface
     public function handle(RequestDto $requestDto): ResponseDto;
 
     /**
-     * @param string $json
-     * @param string|null $id
+     * @param string      $json
+     * @param null|string $id
      *
      * @throws ProcedureNotFoundException
      * @throws InternalErrorException

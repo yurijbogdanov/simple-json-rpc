@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SimpleJsonRpc;
@@ -28,12 +29,25 @@ class Client implements ClientInterface
     }
 
     /**
+     * @param string $method
+     * @param array  $params
+     *
+     * @throws ClientExceptionInterface
+     *
+     * @return mixed
+     */
+    public function __call(string $method, array $params)
+    {
+        return $this->callMethod($method, $params);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function callMethod(string $method, array $params = [])
     {
         try {
-            $id = \sha1(\uniqid('', true));
+            $id = sha1(uniqid('', true));
 
             $responseDto = $this->transport->send(new RequestDto($method, $params, $id));
         } catch (TransportException $e) {
@@ -55,18 +69,5 @@ class Client implements ClientInterface
     public function getMethodsList(): array
     {
         return $this->callMethod('getMethodsList');
-    }
-
-    /**
-     * @param string $method
-     * @param array $params
-     *
-     * @throws ClientExceptionInterface
-     *
-     * @return mixed
-     */
-    public function __call(string $method, array $params)
-    {
-        return $this->callMethod($method, $params);
     }
 }

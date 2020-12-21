@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SimpleJsonRpc;
@@ -12,7 +13,7 @@ interface ClientInterface
 {
     /**
      * @param string $method
-     * @param array $params
+     * @param array  $params
      *
      * @throws ClientExceptionInterface
      *

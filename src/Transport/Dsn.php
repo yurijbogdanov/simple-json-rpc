@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SimpleJsonRpc\Transport;
@@ -21,22 +22,22 @@ final class Dsn
     private $host;
 
     /**
-     * @var int|null
+     * @var null|int
      */
     private $port;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $user;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $password;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $path;
 
@@ -46,13 +47,13 @@ final class Dsn
     private $query;
 
     /**
-     * @param string $scheme
-     * @param string $host
-     * @param int|null $port
-     * @param string|null $user
-     * @param string|null $password
-     * @param string|null $path
-     * @param array $query
+     * @param string      $scheme
+     * @param string      $host
+     * @param null|int    $port
+     * @param null|string $user
+     * @param null|string $password
+     * @param null|string $path
+     * @param array       $query
      */
     public function __construct(string $scheme, string $host, ?int $port = null, ?string $user = null, ?string $password = null, ?string $path = null, array $query = [])
     {
@@ -72,25 +73,25 @@ final class Dsn
      */
     public static function createFromString(string $dsn): self
     {
-        if (false === $parsedDsn = \parse_url($dsn)) {
-            throw new DsnException(\sprintf('The "%s" transport DSN is invalid.', $dsn));
+        if (false === $parsedDsn = parse_url($dsn)) {
+            throw new DsnException(sprintf('The "%s" transport DSN is invalid.', $dsn));
         }
 
         if (!isset($parsedDsn['scheme'])) {
-            throw new DsnException(\sprintf('The "%s" transport DSN must contain a scheme.', $dsn));
+            throw new DsnException(sprintf('The "%s" transport DSN must contain a scheme.', $dsn));
         }
 
         if (!isset($parsedDsn['host'])) {
-            throw new DsnException(\sprintf('The "%s" transport DSN must contain a host.', $dsn));
+            throw new DsnException(sprintf('The "%s" transport DSN must contain a host.', $dsn));
         }
 
         $scheme = $parsedDsn['scheme'];
         $host = $parsedDsn['host'];
         $port = $parsedDsn['port'] ?? null;
-        $user = isset($parsedDsn['user']) ? \urldecode($parsedDsn['user']) : null;
-        $password = isset($parsedDsn['pass']) ? \urldecode($parsedDsn['pass']) : null;
+        $user = isset($parsedDsn['user']) ? urldecode($parsedDsn['user']) : null;
+        $password = isset($parsedDsn['pass']) ? urldecode($parsedDsn['pass']) : null;
         $path = $parsedDsn['path'] ?? null;
-        \parse_str($parsedDsn['query'] ?? '', $query);
+        parse_str($parsedDsn['query'] ?? '', $query);
 
         return new self($scheme, $host, $port, $user, $password, $path, $query);
     }
@@ -112,7 +113,7 @@ final class Dsn
     }
 
     /**
-     * @return int|null
+     * @return null|int
      */
     public function getPort(): ?int
     {
@@ -120,7 +121,7 @@ final class Dsn
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getUser(): ?string
     {
@@ -128,7 +129,7 @@ final class Dsn
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getPassword(): ?string
     {
@@ -136,7 +137,7 @@ final class Dsn
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getPath(): ?string
     {
@@ -153,9 +154,9 @@ final class Dsn
 
     /**
      * @param string $key
-     * @param null $default
+     * @param null   $default
      *
-     * @return mixed|null
+     * @return mixed
      */
     public function getQueryValue(string $key, $default = null)
     {

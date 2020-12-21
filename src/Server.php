@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SimpleJsonRpc;
 
 use SimpleJsonRpc\Dto\RequestDto;
-use SimpleJsonRpc\Dto\ResponseDto;
 use SimpleJsonRpc\Dto\RequestDtoFactory;
+use SimpleJsonRpc\Dto\ResponseDto;
 use SimpleJsonRpc\Exception\InternalErrorException;
 use SimpleJsonRpc\Exception\ProcedureNotFoundException;
 
@@ -17,7 +18,7 @@ class Server implements ServerInterface
     /**
      * @var array<string, callable>
      */
-    private $methodMap;
+    private $methodMap = [];
 
     /**
      * @param array<string, callable> $methods
@@ -42,7 +43,7 @@ class Server implements ServerInterface
      */
     public function getMethodsList(): array
     {
-        return \array_keys($this->methodMap);
+        return array_keys($this->methodMap);
     }
 
     /**
@@ -69,7 +70,7 @@ class Server implements ServerInterface
         $method = $requestDto->getMethod();
 
         if (null === $procedure = $this->resolveProcedure($method)) {
-            throw new ProcedureNotFoundException(\sprintf('Method "%s" not found', $method));
+            throw new ProcedureNotFoundException(sprintf('Method "%s" not found', $method));
         }
 
         try {
